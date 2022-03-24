@@ -4,8 +4,6 @@ import NewCommentInput from "./NewCommentInput";
 
 const Comments = () => {
 
-
-
     const [comments, setComments] = useState([
         {
             id: 0, depth: 0, comment: 'comment1',
@@ -38,14 +36,14 @@ const Comments = () => {
     ])
 
 
-    const deleteComment = (comment) => {
-        console.log('delete',comment)
+    const deleteComment = (prevComment,comment) => {
+        console.log('delete',prevComment,comment)
     }
-    const replyComment = (comment) =>{
-        console.log('reply',comment)
+    const replyComment = (prevComment,comment) =>{
+        console.log('reply',prevComment,comment)
     }
-    const editComment = (comment) =>{
-        console.log('edit',comment)
+    const editComment = (prevComment,comment) =>{
+        console.log('edit',prevComment,comment)
     }
 
 
