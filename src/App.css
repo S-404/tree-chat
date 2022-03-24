@@ -1,0 +1,13 @@
+.comments{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.comments .comments__comment{
+    margin: 0  0 .5em  2em;
+
+    padding: .5em 0 0 .5em;
+    border-left: .1em solid #e0e0e0;
+}
+
