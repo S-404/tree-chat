@@ -1,8 +1,35 @@
 import React, {useContext} from 'react';
 import {Context} from "../context";
+import TextArea from "./TextArea";
 
-const Comment = ({comment, deleteCommentHandler, replyCommentHandler, editCommentHandler}) => {
+const Comment = ({comment}) => {
     const {user} = useContext(Context)
+    const {selectedComment, setSelectedComment} = useContext(Context)
+    const {addNewComment,deleteComment,updateComment} = useContext(Context)
+
+    const deleteCommentHandler = (comment) => {
+        deleteComment(comment)
+    }
+
+    const replyCommentHandler = (comment) => {
+        const newSelectedObj = {
+            id: comment.id,
+            mode: 'reply',
+            action: addNewComment
+        }
+        setSelectedComment(newSelectedObj)
+    }
+    const editCommentHandler = (comment) => {
+        const newSelectedObj = {
+            id: comment.id,
+            mode: 'edit',
+            action: updateComment
+        }
+        setSelectedComment(newSelectedObj)
+    }
+
+
+
     return (
         <div className={'comments__comment'}>
             <div>
@@ -29,6 +56,13 @@ const Comment = ({comment, deleteCommentHandler, replyCommentHandler, editCommen
                     : null}
 
             </div>
+
+            <div>
+                {selectedComment.id === comment.id ?
+                   <TextArea/>
+                    :null}
+            </div>
+
             <div className={'comment__replies'}>
                 {comment.replies.map(reply => (
                     <Comment

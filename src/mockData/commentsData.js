@@ -1,4 +1,4 @@
-export const commentsData = [
+export const commentsMockData = [
     {
         id: 1,
         parentID: null,
