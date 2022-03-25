@@ -1,23 +1,23 @@
 import React from 'react';
 
-const Comment = ({comment, deleteComment, replyComment, editComment}) => {
+const Comment = ({comment, deleteCommentHandler, replyCommentHandler, editCommentHandler}) => {
 
     return (
         <div className={'comments__comment'}>
             <span>{comment.comment}</span>
             <div className={'comment__buttons'}>
-                <button onClick={() => editComment(comment)}>✎</button>
-                <button onClick={() => replyComment(comment)}>⮪</button>
-                <button onClick={() => deleteComment(comment)}>✖</button>
+                <button onClick={() => editCommentHandler(comment)}>✎</button>
+                <button onClick={() => replyCommentHandler(comment)}>⮪</button>
+                <button onClick={() => deleteCommentHandler(comment)}>✖</button>
             </div>
             <div className={'comment__replies'}>
                 {comment.replies.map(reply => (
                     <Comment
                         key={reply.id}
                         comment={reply}
-                        deleteComment={deleteComment}
-                        replyComment={replyComment}
-                        editComment={editComment}
+                        deleteCommentHandler={deleteCommentHandler}
+                        replyCommentHandler={replyCommentHandler}
+                        editCommentHandler={editCommentHandler}
                     />
                 ))}
             </div>

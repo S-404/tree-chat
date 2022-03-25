@@ -67,13 +67,26 @@ const Comments = () => {
     }, [comments])
 
     const deleteComment = (comment) => {
-        console.log('delete', comment)
-        // setComments(comments.filter(comment_=> comment_.id !== comment.id))
+        const newCommentsObj = [...comments]
+        const objIndex =  newCommentsObj.findIndex((comment_)=>comment_.id===comment.id)
+        newCommentsObj[objIndex].comment = null
+        newCommentsObj[objIndex].username = null
+        newCommentsObj[objIndex].imgSource = null
+        setComments(newCommentsObj)
     }
-    const replyComment = (comment) => {
+
+    const updateComment = () => {
+
+    }
+
+    const deleteCommentHandler = (comment) => {
+        deleteComment(comment)
+    }
+
+    const replyCommentHandler = (comment) => {
         console.log('reply', comment)
     }
-    const editComment = (comment) => {
+    const editCommentHandler = (comment) => {
         console.log('edit', comment)
     }
 
@@ -85,9 +98,9 @@ const Comments = () => {
                     <Comment
                         key={comment.id}
                         comment={comment}
-                        deleteComment={deleteComment}
-                        replyComment={replyComment}
-                        editComment={editComment}
+                        deleteCommentHandler={deleteCommentHandler}
+                        replyCommentHandler={replyCommentHandler}
+                        editCommentHandler={editCommentHandler}
                     />
                 ))}
             </div>
