@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {Context} from "../context";
+import {datetimeFormat} from "../helpers/formats";
 
 const NewCommentInput = ({comments, setComments}) => {
-
+    const {user} = useContext(Context)
     const [newComment, setNewComment] = useState('')
 
     const newCommentInputHandler = (e) => {
@@ -12,16 +14,18 @@ const NewCommentInput = ({comments, setComments}) => {
         return{
             id,
             parentID,
-            author: 'author',
+            userID: user.userID,
+            username: user.username,
             imgSource: '',
-            datetime: new Date(),
+            datetime: datetimeFormat(new Date()),
             comment,
         }
     }
 
     const addNewComment = () => {
         if (newComment) {
-            const commentObj = newCommentObj(comments.length, newComment)
+            const maxID = comments.reduce((prev,curr)=>Math.max(prev,curr.id),0)
+            const commentObj = newCommentObj(maxID+1, newComment)
             setComments([...comments, commentObj])
             setNewComment('')
         }
