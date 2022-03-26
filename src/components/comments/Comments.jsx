@@ -1,17 +1,18 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import Comment from "./Comment";
-import NewCommentInput from "./NewCommentInput";
-import {Context} from "../context";
-import {newCommentObj} from "../helpers/objects";
-import {datetimeFormat} from "../helpers/formats";
-import {commentsMockData} from "../mockData/commentsData";
+import NewCommentInput from "../commentInput/NewCommentInput";
+import {Context} from "../../context";
+import {newCommentObj} from "../../helpers/objects";
+import {datetimeFormat} from "../../helpers/formats";
+import {commentsMockData} from "../../mockData/commentsData";
 
 const Comments = () => {
 
     const [user] = useState({userID: 10, username: 'Имяпользователя И.И.'})
     const [comments, setComments] = useState([])
     const [selectedComment, setSelectedComment] = useState({
-        id: -1, mode: '', action: ()=>{}
+        id: -1, mode: '', action: () => {
+        }
     })
 
     useEffect(() => setComments(commentsMockData), [])
@@ -30,7 +31,7 @@ const Comments = () => {
         const objIndex = newCommentsObj.findIndex((comment_) => comment_.id === comment.id)
         newCommentsObj[objIndex].comment = null
         newCommentsObj[objIndex].username = null
-        newCommentsObj[objIndex].datetime =  datetimeFormat(new Date())
+        newCommentsObj[objIndex].datetime = datetimeFormat(new Date())
         setComments(newCommentsObj)
     }
 
@@ -38,11 +39,11 @@ const Comments = () => {
         const newCommentsObj = [...comments]
         const objIndex = newCommentsObj.findIndex((comment_) => comment_.id === commentID)
         newCommentsObj[objIndex].comment = newComment
-        newCommentsObj[objIndex].datetime =  datetimeFormat(new Date())
+        newCommentsObj[objIndex].datetime = datetimeFormat(new Date())
         setComments(newCommentsObj)
     }
 
-    const addNewComment = (newComment,parentID=null) => {
+    const addNewComment = (newComment, parentID = null) => {
         if (newComment) {
             const maxID = comments.reduce((prev, curr) => Math.max(prev, curr.id), 0)
             const commentObj = newCommentObj(
@@ -56,7 +57,6 @@ const Comments = () => {
 
         }
     }
-
 
 
     return (
