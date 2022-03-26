@@ -21,17 +21,12 @@ const NewCommentInput = () => {
     }
 
     return (
-        <div>
             <CommentInput
                 text={newComment}
                 onChangeHandler={onChangeHandler}
                 cancelButtonHandler={cancelButtonHandler}
                 addButtonHandler={addCommentButtonHandler}
             />
-
-        </div>
-
-
     );
 };
 

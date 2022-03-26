@@ -1,0 +1,56 @@
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comments .comments__comment {
+  padding-left: 10px;
+  margin: 7px 0 5px 13px;
+}
+.comments .comments__comment_reply {
+  border-left: 1px dashed #979797;
+}
+.comments .comments__comment .comment__comment-header {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+}
+.comments .comments__comment .comment__comment-header .comment-header__comment-log {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+}
+.comments .comments__comment .comment__comment-header .comment-header__comment-log .comment-log__author {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  color: #757575;
+}
+.comments .comments__comment .comment__comment-header .comment-header__comment-log .comment-log__datetime {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #757575;
+}
+.comments .comments__comment .comment__comment-body .comment-body__comment-text {
+  padding: 5px 0;
+}
+.comments .comments__comment .comment__comment-body .comment-body__comment-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.comments .comments__comment .comment__comment-body .comment-body__comment-buttons .comments-buttons__button {
+  background-color: transparent;
+  margin-right: 13px;
+  border: none;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  color: #138813;
+}
+
+/*# sourceMappingURL=comments.css.map */

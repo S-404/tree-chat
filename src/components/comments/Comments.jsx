@@ -5,17 +5,22 @@ import {Context} from "../../context";
 import {newCommentObj} from "../../helpers/objects";
 import {datetimeFormat} from "../../helpers/formats";
 import {commentsMockData} from "../../mockData/commentsData";
+import './comments.scss'
+import {userData} from "../../mockData/userData";
+
 
 const Comments = () => {
 
-    const [user] = useState({userID: 10, username: 'Имяпользователя И.И.'})
+    const [user,setUser] = useState({})
     const [comments, setComments] = useState([])
     const [selectedComment, setSelectedComment] = useState({
-        id: -1, mode: '', action: () => {
-        }
+        id: -1, mode: '', action: () => {},isFullMenu:false
     })
 
-    useEffect(() => setComments(commentsMockData), [])
+    useEffect(() => {
+        setComments(commentsMockData)
+        setUser(userData)
+    }, [])
 
     const commentsData = useMemo(() => {
         const nestedData = (items, id = null) => {
@@ -51,6 +56,7 @@ const Comments = () => {
                 newComment,
                 user,
                 datetimeFormat(new Date()),
+                user.photo,
                 parentID
             )
             setComments([...comments, commentObj])

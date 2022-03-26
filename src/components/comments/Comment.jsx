@@ -6,19 +6,18 @@ const Comment = ({comment}) => {
 
 
     return (
-        <section className={'comments__comment'}>
+        <section
+            className={`comments__comment 
+            ${comment.parentID?'comments__comment_reply':null}`}>
             <CommentHeader comment={comment}/>
-            <CommentBody  comment={comment} />
+            <CommentBody comment={comment}/>
 
-            <section className={'comment__replies'}>
-                {comment.replies.map(reply => (
-                    <Comment
-                        key={reply.id}
-                        comment={reply}
-                    />
-                ))}
-            </section>
-
+            {comment.replies.map(reply => (
+                <Comment
+                    key={reply.id}
+                    comment={reply}
+                />
+            ))}
         </section>
 
     );

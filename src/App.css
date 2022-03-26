@@ -1,13 +1,33 @@
-.comments{
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin; /*mozilla scrollbar*/
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #f0f0f0;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+}
+
+#root {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
     display: flex;
-    flex-direction: column;
-
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    background: #F2F2F2;
+    overflow-y: scroll;
+    color: gray;
 }
 
-.comments .comments__comment{
-    margin: 0  0 .5em  2em;
 
-    padding: .5em 0 0 .5em;
-    border-left: .1em solid #e0e0e0;
-}
 
