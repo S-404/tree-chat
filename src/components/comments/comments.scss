@@ -22,7 +22,7 @@
       height: 30px;
 
       .comment-header__photo-img{
-
+        min-width: 30px;
       }
 
       .comment-header__comment-log{
@@ -51,6 +51,7 @@
     .comment__comment-body {
       .comment-body__comment-text {
         padding: 5px 0;
+        color: #333333;
       }
 
       .comment-body__comment-buttons {
