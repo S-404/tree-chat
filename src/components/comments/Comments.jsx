@@ -64,6 +64,13 @@ const Comments = () => {
         }
     }
 
+    const expandCommentBranch = (comment) => {
+        const newCommentsObj = [...comments]
+        const objIndex = newCommentsObj.findIndex((comment_) => comment_.id === comment.id)
+        newCommentsObj[objIndex].expanded = true
+        setComments(newCommentsObj)
+    }
+
 
     return (
         <Context.Provider value={
@@ -71,7 +78,7 @@ const Comments = () => {
                 user,
                 comments, setComments,
                 selectedComment, setSelectedComment,
-                addNewComment, deleteComment, updateComment,
+                addNewComment, deleteComment, updateComment,expandCommentBranch
             }
         }>
             <div className={'comments'}>

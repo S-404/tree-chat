@@ -5,7 +5,12 @@ import EditorButtons from "../UI/EditorButtons";
 
 const CommentBody = ({comment}) => {
     const {selectedComment} = useContext(Context)
-    if (!comment.comment) return null
+
+    if (!comment.comment) return (
+        <section className={'comment__comment-body'}>
+            <EditorButtons comment={comment}/>
+        </section>
+    )
     return (
         <section className={'comment__comment-body'}>
 
@@ -13,7 +18,7 @@ const CommentBody = ({comment}) => {
 
             <EditorButtons comment={comment}/>
 
-            {selectedComment.id === comment.id && selectedComment.mode?
+            {selectedComment.id === comment.id && selectedComment.mode ?
                 <ReplyCommentInput/>
                 : null}
         </section>

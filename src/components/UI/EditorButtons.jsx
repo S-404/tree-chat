@@ -7,6 +7,11 @@ const EditorButtons = ({comment}) => {
     const {user} = useContext(Context)
     const {selectedComment, setSelectedComment} = useContext(Context)
     const {addNewComment, deleteComment, updateComment} = useContext(Context)
+    const {expandCommentBranch} = useContext(Context)
+
+    const expandCommentBranchHandler = () => {
+        expandCommentBranch(comment)
+    }
 
     const deleteCommentHandler = (comment) => {
         deleteComment(comment)
@@ -47,6 +52,17 @@ const EditorButtons = ({comment}) => {
         setSelectedComment(newSelectedObj)
     }
 
+    if (!comment?.expanded) return (
+        <div className={'comment-body__comment-buttons'}>
+            <button
+                className={'comments-buttons__button comments-buttons__expand-button'}
+                onClick={expandCommentBranchHandler}
+            >Expand branch
+            </button>
+        </div>
+    )
+
+    if(!comment.comment) return null
 
     return (
         <div className={'comment-body__comment-buttons'}>
