@@ -39,8 +39,7 @@ const EditorButtons = ({comment}) => {
 
         const newSelectedObj = {
             id: comment.id,
-            action: () => {
-            },
+            action: null,
             isFullMenu: isFullNewValue,
         }
         setSelectedComment(newSelectedObj)

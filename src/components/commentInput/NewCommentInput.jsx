@@ -10,10 +10,11 @@ const NewCommentInput = () => {
 
     const addCommentButtonHandler = () => {
         addNewComment(newComment, null)
+        setNewComment('')
     }
 
     const onChangeHandler=(e)=>{
-        setNewComment(e.target.value)
+        setNewComment(String(e.target.value))
     }
 
     const cancelButtonHandler = () => {
