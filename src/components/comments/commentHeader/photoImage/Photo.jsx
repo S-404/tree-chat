@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultPhoto from '../../../assets/DefaultPhoto.svg'
+import DefaultPhoto from '../../../../assets/DefaultPhoto.svg'
 
 const Photo = ({imgSource}) => {
     return (

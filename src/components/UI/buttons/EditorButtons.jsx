@@ -1,17 +1,14 @@
 import React, {useContext} from 'react';
-import {Context} from "../../context";
-import FullMenu from "./meatBallsMenu/FullMenu";
+import {Context} from "../../../context";
+import FullMenu from "../meatBallsMenu/FullMenu";
+import ExpandButton from "./ExpandButton";
 
 
 const EditorButtons = ({comment}) => {
     const {user} = useContext(Context)
     const {selectedComment, setSelectedComment} = useContext(Context)
     const {addNewComment, deleteComment, updateComment} = useContext(Context)
-    const {expandCommentBranch} = useContext(Context)
 
-    const expandCommentBranchHandler = () => {
-        expandCommentBranch(comment)
-    }
 
     const deleteCommentHandler = (comment) => {
         deleteComment(comment)
@@ -21,7 +18,6 @@ const EditorButtons = ({comment}) => {
         const newSelectedObj = {
             ...selectedComment,
             id: comment.id,
-            mode: 'reply',
             action: addNewComment
         }
         setSelectedComment(newSelectedObj)
@@ -30,7 +26,6 @@ const EditorButtons = ({comment}) => {
         const newSelectedObj = {
             ...selectedComment,
             id: comment.id,
-            mode: 'edit',
             action: updateComment
         }
         setSelectedComment(newSelectedObj)
@@ -44,7 +39,6 @@ const EditorButtons = ({comment}) => {
 
         const newSelectedObj = {
             id: comment.id,
-            mode: '',
             action: () => {
             },
             isFullMenu: isFullNewValue,
@@ -52,17 +46,12 @@ const EditorButtons = ({comment}) => {
         setSelectedComment(newSelectedObj)
     }
 
+
     if (!comment?.expanded) return (
-        <div className={'comment-body__comment-buttons'}>
-            <button
-                className={'comments-buttons__button comments-buttons__expand-button'}
-                onClick={expandCommentBranchHandler}
-            >Expand branch
-            </button>
-        </div>
+        <ExpandButton comment={comment}/>
     )
 
-    if(!comment.comment) return null
+    if (!comment.comment) return null
 
     return (
         <div className={'comment-body__comment-buttons'}>
@@ -91,7 +80,6 @@ const EditorButtons = ({comment}) => {
             {user.userID === comment.userID ?
                 <FullMenu onClick={() => fullMenuHandler(comment)}/>
                 : null}
-
 
         </div>
     );

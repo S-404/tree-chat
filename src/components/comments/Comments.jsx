@@ -11,17 +11,31 @@ import {userData} from "../../mockData/userData";
 
 const Comments = () => {
 
-    const [user,setUser] = useState({})
-    const [comments, setComments] = useState([])
-    const [selectedComment, setSelectedComment] = useState({
-        id: -1, mode: '', action: () => {},isFullMenu:false
-    })
+    //>>>предполагается получение данных
+    //подтягиваются фейковые данные userData и commentsMockData
+    const [user, setUser] = useState({})
 
+    //было принято решение хранить данные в "табличном" ввиде
+    //где комментарий (начало ветки) имеет св-во parentID равным null
+    //а в каждом ответе на комментарий объекте св-во parentID ссылается на id другого объекта,
+    const [comments, setComments] = useState([])
     useEffect(() => {
         setComments(commentsMockData)
         setUser(userData)
     }, [])
+    //<<<
+    //>>>состояние выбранного комментария
+    const [selectedComment, setSelectedComment] = useState({
+        id: -1, //для определения собственных комментов
+        action: () => {},//функция edit или new comment/reply
+        isFullMenu: false //для отображения кнопок (reply,edit,delete)
+    })
+    //<<<
 
+
+
+    //>>>преобразует "табличный" вид данных в объект с комментариями со вложенными ответами
+    //тем самым разбивается на ветки
     const commentsData = useMemo(() => {
         const nestedData = (items, id = null) => {
             return items
@@ -30,6 +44,7 @@ const Comments = () => {
         }
         return nestedData(comments)
     }, [comments])
+    //<<<
 
     const deleteComment = (comment) => {
         const newCommentsObj = [...comments]
@@ -50,7 +65,11 @@ const Comments = () => {
 
     const addNewComment = (newComment, parentID = null) => {
         if (newComment) {
+            //так как обрабатываются моковые данные
+            // новая id вычисляется этим способом,
+            // а не полученными данными от сервера.
             const maxID = comments.reduce((prev, curr) => Math.max(prev, curr.id), 0)
+
             const commentObj = newCommentObj(
                 maxID + 1,
                 newComment,
@@ -60,7 +79,6 @@ const Comments = () => {
                 parentID
             )
             setComments([...comments, commentObj])
-
         }
     }
 
@@ -78,7 +96,7 @@ const Comments = () => {
                 user,
                 comments, setComments,
                 selectedComment, setSelectedComment,
-                addNewComment, deleteComment, updateComment,expandCommentBranch
+                addNewComment, deleteComment, updateComment, expandCommentBranch
             }
         }>
             <div className={'comments'}>

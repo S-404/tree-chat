@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import ReplyCommentInput from "../commentInput/ReplyCommentInput";
 import {Context} from "../../context";
-import EditorButtons from "../UI/EditorButtons";
+import EditorButtons from "../UI/buttons/EditorButtons";
 
 const CommentBody = ({comment}) => {
+
     const {selectedComment} = useContext(Context)
 
     if (!comment.comment) return (
@@ -18,7 +19,7 @@ const CommentBody = ({comment}) => {
 
             <EditorButtons comment={comment}/>
 
-            {selectedComment.id === comment.id && selectedComment.mode ?
+            {selectedComment.id === comment.id && selectedComment.action ?
                 <ReplyCommentInput/>
                 : null}
         </section>

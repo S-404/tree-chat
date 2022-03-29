@@ -10,14 +10,12 @@ const ReplyCommentInput = () => {
 
     const cancelButtonHandler = () => {
         setSelectedComment({
-            id: null, mode: null, action: () => {
-            }
+            id: null, action: () => {}
         })
     }
 
     const addButtonHandler = () => {
         if (text) {
-            console.log(selectedComment)
             selectedComment.action(text, selectedComment.id)
             cancelButtonHandler()
         }
