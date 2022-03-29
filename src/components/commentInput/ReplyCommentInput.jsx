@@ -22,7 +22,7 @@ const ReplyCommentInput = () => {
     }
 
     const onChangeHandler = (e) => {
-        setText(e.target.value)
+        setText(String(e.target.value))
     }
 
     return (
