@@ -1,5 +1,5 @@
 import React from 'react';
-import add_svg from "../../assets/add.svg";
+import add_svg from "../../../assets/add.svg";
 
 const InputButtons = ({cancelButtonHandler, addButtonHandler}) => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import './commentInput.scss'
+import './styles/commentInput.scss'
 import MyTextArea from "../UI/myTextArea/MyTextArea";
-import InputButtons from "./InputButtons";
+import InputButtons from "./buttons/InputButtons";
 
 const CommentInput = ({text,onChangeHandler, cancelButtonHandler, addButtonHandler}) => {
 

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Context} from "../../../context";
-import FullMenu from "../meatBallsMenu/FullMenu";
+import FullMenu from "../../UI/meatBallsMenu/FullMenu";
 import ExpandButton from "./ExpandButton";
 
 

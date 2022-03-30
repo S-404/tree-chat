@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import ReplyCommentInput from "../commentInput/ReplyCommentInput";
-import {Context} from "../../context";
-import EditorButtons from "../UI/buttons/EditorButtons";
+import ReplyCommentInput from "../../commentInput/ReplyCommentInput";
+import {Context} from "../../../context";
+import EditorButtons from "../../commentInput/buttons/EditorButtons";
 
 const CommentBody = ({comment}) => {
 

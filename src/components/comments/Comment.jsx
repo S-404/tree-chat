@@ -1,6 +1,6 @@
 import React from 'react';
 import CommentHeader from "./commentHeader/CommentHeader";
-import CommentBody from "./CommentBody";
+import CommentBody from "./commentBody/CommentBody";
 
 const Comment = ({comment}) => {
 

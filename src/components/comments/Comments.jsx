@@ -5,7 +5,7 @@ import {Context} from "../../context";
 import {newCommentObj} from "../../helpers/objects";
 import {datetimeFormat} from "../../helpers/formats";
 import {commentsMockData} from "../../mockData/commentsData";
-import './comments.scss'
+import './styles/comments.scss'
 import {userData} from "../../mockData/userData";
 
 
