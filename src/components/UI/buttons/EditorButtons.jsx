@@ -45,6 +45,11 @@ const EditorButtons = ({comment}) => {
         setSelectedComment(newSelectedObj)
     }
 
+    const isOwnComment = user.userID === comment.userID
+
+    const accessEditDelete = isOwnComment &&
+        comment.id === selectedComment.id &&
+        selectedComment.isFullMenu
 
     if (!comment?.expanded) return (
         <ExpandButton comment={comment}/>
@@ -60,25 +65,20 @@ const EditorButtons = ({comment}) => {
                 onClick={() => replyCommentHandler(comment)}>Reply
             </button>
 
-            {
-                user.userID === comment.userID &&
-                comment.id === selectedComment.id &&
-                selectedComment.isFullMenu ?
-                    <>
-                        <button
-                            className={'comments-buttons__button  comments-buttons__edit-button'}
-                            onClick={() => editCommentHandler(comment)}>Edit
-                        </button>
-                        <button
-                            className={'comments-buttons__button comments-buttons__delete-button'}
-                            onClick={() => deleteCommentHandler(comment)}>Delete
-                        </button>
-                    </> : null
+            {accessEditDelete ?
+                <>
+                    <button
+                        className={'comments-buttons__button  comments-buttons__edit-button'}
+                        onClick={() => editCommentHandler(comment)}>Edit
+                    </button>
+                    <button
+                        className={'comments-buttons__button comments-buttons__delete-button'}
+                        onClick={() => deleteCommentHandler(comment)}>Delete
+                    </button>
+                </> : null
             }
 
-            {user.userID === comment.userID ?
-                <FullMenu onClick={() => fullMenuHandler(comment)}/>
-                : null}
+            {isOwnComment ? <FullMenu onClick={() => fullMenuHandler(comment)}/> : null}
 
         </div>
     );
