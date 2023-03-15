@@ -6,7 +6,10 @@
 Уровень вложенности ветки комментариев не ограничен.
 
 ## preview
-https://s-404.github.io/test-1
+https://s-404.github.io/tree-chat/
+
+![image](https://user-images.githubusercontent.com/91373803/225409140-e08dd43c-c195-4d90-9094-f8da4de57a96.png)
+
 
 ## use script
 `npm start`
