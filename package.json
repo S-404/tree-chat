@@ -1,7 +1,7 @@
 {
-  "name": "test-task1",
+  "name": "tree-chat",
   "version": "0.1.0",
-  "homepage": "https://s-404.github.io/test-1",
+  "homepage": "https://s-404.github.io/tree-chat",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
